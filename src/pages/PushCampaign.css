@@ -1,0 +1,124 @@
+/* Two columns: form on the left + 300px phone preview on the right */
+.campaign {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 24px;
+  align-items: start;
+}
+
+.campaign-form {
+  min-width: 0;
+  min-height: 480px;
+}
+
+/* Step 1 / Step 2 bar */
+.steps {
+  display: flex;
+  margin-bottom: 24px;
+  background: var(--grey-line);
+  border-radius: 8px;
+}
+
+.step {
+  flex: 1;
+  height: 38px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--grey-text);
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.step.active {
+  background: var(--purple);
+  color: var(--white);
+  font-weight: 600;
+}
+
+/* Form fields in 2 equal columns */
+.campaign-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 24px;
+}
+
+/* Small "Template Type" box + wide "Template" box */
+.campaign-template-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  column-gap: 16px;
+}
+
+/* Small "Country" box + wide "mobile number field" box */
+.campaign-country-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  column-gap: 16px;
+}
+
+/* Schedule date box + time box side by side */
+.campaign-schedule-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 16px;
+}
+
+.info-icon {
+  display: flex;
+  color: var(--grey-text);
+}
+
+/* File chooser with a dashed border */
+.file-input {
+  width: 100%;
+  padding: 8px;
+  border: 2px dashed var(--grey-line);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.file-input:disabled {
+  background: var(--grey-fill);
+}
+
+/* Checkbox with its text */
+.check-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.check-label input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--purple); /* makes the tick purple */
+}
+
+.campaign-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* Medium screens: phone preview goes below the form */
+@media (max-width: 1200px) {
+  .campaign {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Phones: every field takes the full width */
+@media (max-width: 700px) {
+  .campaign-grid,
+  .campaign-template-row,
+  .campaign-country-row {
+    grid-template-columns: 1fr;
+  }
+}

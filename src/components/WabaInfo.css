@@ -1,0 +1,34 @@
+.waba-info {
+  padding: 24px 20px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 12px;
+}
+
+.waba-info-title {
+  margin-bottom: 20px;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--purple);
+}
+
+.waba-info-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.waba-info-table th,
+.waba-info-table td {
+  padding: 12px;
+  border: 1px solid var(--grey-line);
+  text-align: left;
+  font-weight: 400;
+  word-break: break-word; /* long values go to the next line */
+}
+
+.waba-info-table th {
+  width: 45%;
+  background: var(--grey-fill);
+  color: var(--grey-text);
+}

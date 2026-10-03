@@ -1,0 +1,80 @@
+/* Page layout: sidebar on the left, content on the right */
+.app {
+  display: flex;
+  min-height: 100vh;
+  background: var(--purple);
+}
+
+.main {
+  flex: 1;
+  min-width: 0; /* stops wide content from pushing the page sideways */
+  margin-top: 20px;
+  padding: 0 24px 32px;
+  background: var(--grey-fill);
+  border-top-left-radius: 30px;
+}
+
+/* Only used on phones (see below) */
+.sidebar-overlay {
+  display: none;
+}
+
+/* Simple box shown for pages that are not built yet */
+.coming-soon {
+  padding: 48px 24px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.coming-soon h2 {
+  margin-bottom: 8px;
+  font-family: var(--font-heading);
+  color: var(--purple);
+}
+
+.coming-soon p {
+  color: var(--grey-text);
+}
+
+/* Big screens: hide the sidebar fully when it is closed */
+@media (min-width: 901px) {
+  .sidebar-closed .sidebar {
+    display: none;
+  }
+
+  .sidebar-closed .main {
+    margin-top: 0;
+    border-radius: 0;
+  }
+}
+
+/* Phones and tablets: the sidebar slides in over the page */
+@media (max-width: 900px) {
+  .main {
+    margin-top: 0;
+    padding: 0 16px 24px;
+    border-radius: 0;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    z-index: 20;
+    transform: translateX(-100%); /* hidden outside the screen */
+    transition: transform 0.25s;
+  }
+
+  .sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+
+  .sidebar-open .sidebar-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background: rgba(35, 26, 34, 0.5);
+  }
+}

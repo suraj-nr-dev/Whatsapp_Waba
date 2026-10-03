@@ -1,0 +1,165 @@
+/* Global styles used by the whole app */
+
+/* ReapLift brand colors. Use these variables everywhere instead of
+   typing color codes again, so the whole app stays consistent. */
+:root {
+  --purple: #8e3a98; /* main brand color */
+  --purple-dark: #6f2b78;
+  --purple-light: #f1e4f3;
+  --orange: #f7941d; /* accent color, use it in small amounts */
+  --ink: #231a22; /* normal text */
+  --grey-text: #6b5f6d; /* lighter text */
+  --grey-fill: #f8f5f8; /* page background */
+  --grey-line: #e4dce6; /* borders */
+  --white: #ffffff;
+
+  /* Message colors (success = green, error = red) */
+  --success: #1e7b45;
+  --success-light: #e6f4ec;
+  --error: #b3261e;
+  --error-light: #fbeaea;
+
+  --font-heading: 'Poppins', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--grey-fill);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Shows an orange outline when a user moves with the keyboard (Tab key) */
+button:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+/* ---------- Shared styles: use these on every page ---------- */
+
+.page-title {
+  margin-bottom: 16px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* White box */
+.card {
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 12px;
+}
+
+/* One form field = label + input */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Text boxes and dropdowns */
+.form-control {
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--grey-line);
+  border-radius: 8px;
+  background: var(--white);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px var(--purple-light);
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background: var(--grey-fill);
+  color: var(--grey-text);
+}
+
+/* Small grey text under a field */
+.form-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--grey-text);
+}
+
+/* Buttons */
+.btn {
+  height: 40px;
+  padding: 0 24px;
+  border: 1px solid var(--purple);
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: var(--purple);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--purple-dark);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--purple);
+}
+
+.btn-secondary:hover {
+  background: var(--purple-light);
+}
+
+/* Message boxes */
+.alert {
+  margin-bottom: 20px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.alert-success {
+  background: var(--success-light);
+  color: var(--success);
+}
+
+.alert-error {
+  background: var(--error-light);
+  color: var(--error);
+}

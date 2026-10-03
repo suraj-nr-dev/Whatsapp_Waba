@@ -1,0 +1,93 @@
+.chart-card {
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 12px;
+}
+
+.chart-total {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.chart-subtitle {
+  margin-bottom: 28px;
+  font-size: 13px;
+  color: var(--grey-text);
+}
+
+/* On small screens the chart can be scrolled sideways */
+.chart-scroll {
+  overflow-x: auto;
+}
+
+.chart {
+  display: flex;
+  gap: 10px;
+  min-width: 620px;
+  padding-top: 8px;
+}
+
+/* Numbers on the left side */
+.chart-y-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 240px; /* same height as .chart-bars */
+  font-size: 12px;
+  color: var(--grey-text);
+  text-align: right;
+}
+
+/* Height 0 keeps every number exactly in line with its grid line */
+.chart-y-axis span {
+  height: 0;
+  line-height: 0;
+}
+
+.chart-right {
+  flex: 1;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 240px;
+  border-bottom: 1px solid var(--grey-line);
+  /* Draws the 5 light grid lines behind the bars */
+  background-image: linear-gradient(var(--grey-line) 1px, transparent 1px);
+  background-size: 100% 20%;
+}
+
+/* Each day gets an equal share of the width */
+.chart-bar-box {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.chart-bar {
+  width: 100%;
+  background: var(--purple);
+  border-radius: 3px 3px 0 0;
+}
+
+.chart-bar:hover {
+  background: var(--orange);
+}
+
+.chart-x-axis {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--grey-text);
+}
+
+.chart-x-axis span {
+  flex: 1;
+  text-align: center;
+}

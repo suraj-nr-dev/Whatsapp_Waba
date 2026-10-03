@@ -1,0 +1,37 @@
+.stat-card {
+  padding: 20px;
+  background: var(--purple-light);
+  border: 1px solid var(--grey-line);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(35, 26, 34, 0.08);
+}
+
+.stat-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.stat-card-icon {
+  display: flex;
+  color: var(--orange);
+}
+
+.stat-card-title {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.stat-card-amount {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--purple-dark);
+}
+
+.stat-card-count {
+  margin-top: 4px;
+  color: var(--grey-text);
+}
