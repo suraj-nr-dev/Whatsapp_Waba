@@ -1,16 +1,53 @@
-# React + Vite
+# ReapLift WhatsApp WABA – Front End
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Web panel for sending and tracking WhatsApp Business (WABA) campaigns, built in ReapLift branding.
+This repository contains the UI only. All data is sample data until the backend API is connected.
 
-Currently, two official plugins are available:
+## Tech
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + Vite
+- Plain CSS (no Tailwind, no UI library)
+- JavaScript
+- `read-excel-file` for reading Excel headers in the browser
 
-## React Compiler
+## Pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Dashboard**
 
-## Expanding the Oxlint configuration
+- Consumption cards: Yesterday, Last 15 Days, This Month, Last Month
+- Daywise Consumption bar chart
+- Waba Information table
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+**Push Campaign**
+
+- Step 1: campaign name, Waba account, template type (Utility / Marketing), template
+- Step 2: send to File / Group / Tag, media file upload, workflow, schedule date and time
+- Uploading an `.xlsx` file fills the mobile number field dropdown from its headers
+  (MobileNumber, Number or PhoneNumber)
+- Live WhatsApp-style preview of the message and uploaded media
+- Success popup after submit
+
+Other menu items show a "coming soon" page.
+
+## Run
+
+```
+npm install
+npm run dev
+```
+
+## Folder structure
+
+```
+src/
+  components/   reusable pieces (Sidebar, Header, StatCard, PhonePreview, ...)
+  pages/        Dashboard, PushCampaign
+  data/         sample data – replace with API responses
+  index.css     brand colours and shared form, button and message styles
+```
+
+## For the backend developer
+
+- Sample data lives in `src/data/`. Each file has a `TODO (backend)` comment.
+- The campaign form is submitted in `handleSubmit` in `src/pages/PushCampaign.jsx`;
+  the API call goes at the `TODO (backend)` comment there.
