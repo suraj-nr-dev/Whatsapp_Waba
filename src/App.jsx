@@ -35,6 +35,12 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen)
   }
 
+  function handleLogout() {
+    // There is no login page yet. When it is built, clear the saved
+    // user here and send them to the login page.
+    console.log('Logout clicked')
+  }
+
   return (
     <div className={isSidebarOpen ? 'app sidebar-open' : 'app sidebar-closed'}>
       <Sidebar activePage={activePage} onSelectPage={handleSelectPage} />
@@ -43,7 +49,11 @@ function App() {
       <div className="sidebar-overlay" onClick={handleToggleMenu} />
 
       <main className="main">
-        <Header userName={userName} onToggleMenu={handleToggleMenu} />
+        <Header
+          userName={userName}
+          onToggleMenu={handleToggleMenu}
+          onLogout={handleLogout}
+        />
 
         {activePage === 'Dashboard' && <Dashboard />}
         {activePage === 'Push Campaign' && <PushCampaign />}
