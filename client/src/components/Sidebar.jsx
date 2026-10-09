@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import Icon from './Icon.jsx'
 import logo from '../assets/logo.png'
-import { menuItems } from '../data/menuItems.js'
 import './Sidebar.css'
 
 // Left side menu.
+// menuItems    = the list of items to show (see data/menuItems.js)
 // activePage   = name of the page that is open now
 // onSelectPage = function to call when the user clicks a page
-function Sidebar({ activePage, onSelectPage }) {
+function Sidebar({ menuItems, activePage, onSelectPage }) {
   // Remembers which dropdown is open. Empty text means no dropdown is open.
   const [openDropdown, setOpenDropdown] = useState('')
 

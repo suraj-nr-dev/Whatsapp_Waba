@@ -19,6 +19,15 @@
   display: none;
 }
 
+/* Shown for a moment while the app checks if the user is logged in */
+.page-loading {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--grey-text);
+}
+
 /* Simple box shown for pages that are not built yet */
 .coming-soon {
   padding: 48px 24px;

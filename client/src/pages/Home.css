@@ -1,0 +1,90 @@
+.home-title {
+  margin-bottom: 6px;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.home-subtitle {
+  margin-bottom: 24px;
+  color: var(--grey-text);
+}
+
+/* The two cards sit side by side */
+.home-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 360px));
+  gap: 24px;
+}
+
+/* One card. The whole card is a link. */
+.home-option {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 24px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 12px;
+  color: var(--ink);
+  text-decoration: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.home-option:hover {
+  border-color: var(--purple);
+  box-shadow: 0 6px 18px rgba(142, 58, 152, 0.12);
+}
+
+/* Same orange outline as buttons when moving with the Tab key */
+.home-option:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+.home-option-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 20px;
+  background: var(--purple-light);
+  color: var(--purple);
+  border-radius: 12px;
+}
+
+.home-option-title {
+  margin-bottom: 8px;
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.home-option-text {
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--grey-text);
+}
+
+/* "Open >" at the bottom of the card */
+.home-option-open {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--purple);
+}
+
+/* Phones: one card per row */
+@media (max-width: 700px) {
+  .home-options {
+    grid-template-columns: 1fr;
+  }
+}

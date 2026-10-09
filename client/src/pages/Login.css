@@ -1,0 +1,147 @@
+/* Login page: purple brand side on the left, form on the right */
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  background: var(--purple);
+}
+
+/* ---------- Left side ---------- */
+
+.login-brand {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 56px;
+  color: var(--white);
+}
+
+.login-brand h1 {
+  max-width: 440px;
+  margin-bottom: 16px;
+  font-family: var(--font-heading);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* Small orange line above the heading (accent color, used once) */
+.login-brand h1::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 4px;
+  margin-bottom: 24px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+
+.login-brand p {
+  max-width: 400px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Right side ---------- */
+
+/* Same rounded corner as the main area of the app */
+.login-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+  background: var(--grey-fill);
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 12px;
+}
+
+.login-logo {
+  display: block;
+  height: 44px;
+  margin-bottom: 28px;
+}
+
+.login-title {
+  margin-bottom: 6px;
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.login-subtitle {
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: var(--grey-text);
+}
+
+/* Password box with the show / hide button inside it */
+.login-password {
+  position: relative;
+}
+
+.login-password .form-control {
+  padding-right: 44px;
+}
+
+.login-password-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--grey-text);
+}
+
+.login-password-toggle:hover {
+  color: var(--purple);
+}
+
+.login-submit {
+  width: 100%;
+  margin-top: 4px;
+}
+
+.login-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login-help {
+  margin-top: 20px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--grey-text);
+}
+
+/* Phones and tablets: show only the form */
+@media (max-width: 900px) {
+  .login-brand {
+    display: none;
+  }
+
+  .login-main {
+    padding: 24px 16px;
+    border-radius: 0;
+  }
+
+  .login-card {
+    padding: 24px;
+  }
+}

@@ -1,6 +1,11 @@
-// Sidebar menu list.
+// Sidebar menu lists.
 // "icon" is a name from components/Icon.jsx.
 // If an item has "children", it becomes a dropdown.
+
+// Menu on the Home page: only "Home", until the user opens WhatsApp or SMS.
+export const homeMenu = [{ label: 'Home', icon: 'home' }]
+
+// Menu of the WhatsApp WABA area
 export const menuItems = [
   { label: 'Home', icon: 'home' },
   { label: 'Dashboard', icon: 'dashboard' },
