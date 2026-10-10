@@ -84,3 +84,28 @@
   background: var(--grey-fill);
   color: var(--purple);
 }
+
+/* Menu icons move a little when the mouse is over the row */
+.menu-item > svg {
+  flex-shrink: 0;
+  transition: transform 0.25s;
+}
+
+.menu-item:hover > svg {
+  transform: scale(1.15) rotate(-8deg);
+}
+
+/* The icon of the open page uses the orange brand color */
+.menu-item.active > svg {
+  color: var(--orange);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu-item > svg {
+    transition: none;
+  }
+
+  .menu-item:hover > svg {
+    transform: none;
+  }
+}

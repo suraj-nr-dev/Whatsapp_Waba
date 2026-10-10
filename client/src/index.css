@@ -7,6 +7,8 @@
   --purple-dark: #6f2b78;
   --purple-light: #f1e4f3;
   --orange: #f7941d; /* accent color, use it in small amounts */
+  --orange-dark: #b45f06; /* orange for text, readable on white */
+  --orange-light: #fef1df;
   --ink: #231a22; /* normal text */
   --grey-text: #6b5f6d; /* lighter text */
   --grey-fill: #f8f5f8; /* page background */
@@ -162,4 +164,40 @@ button:focus-visible {
 .alert-error {
   background: var(--error-light);
   color: var(--error);
+}
+
+/* ---------- Shared animations ---------- */
+
+/* Grey loading bars slowly fade in and out */
+@keyframes skeleton-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* A box slides up a little while it appears */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+/* An icon grows from small to a bit too big, then settles */
+@keyframes icon-pop {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+/* One full turn, used by the refresh icon */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

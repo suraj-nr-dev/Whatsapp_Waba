@@ -1,14 +1,96 @@
-/* Two columns: big left side + 300px right side */
-.dashboard {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 24px;
-  align-items: start;
+/* The page is a stack of rows with the same gap between them */
+.dashboard,
+.dashboard-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-/* Lets the left side shrink so the chart can scroll instead of overflowing */
-.dashboard-left {
-  min-width: 0;
+/* ---------- Top row: title + filter ---------- */
+
+.dashboard-top {
+  display: flex;
+  flex-wrap: wrap; /* the filter drops below the title on small screens */
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.dashboard-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* The days the numbers are for, with a small calendar icon */
+.dashboard-period {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--grey-text);
+}
+
+.dashboard-period svg {
+  color: var(--orange-dark);
+}
+
+.dashboard-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Round refresh button next to the filter */
+.dashboard-refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--grey-line);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--orange-dark);
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.dashboard-refresh svg {
+  transition: transform 0.4s;
+}
+
+.dashboard-refresh:hover:not(:disabled) {
+  background: var(--orange-light);
+  border-color: var(--orange);
+}
+
+/* Mouse over: the arrows make half a turn */
+.dashboard-refresh:hover:not(:disabled) svg {
+  transform: rotate(180deg);
+}
+
+.dashboard-refresh:disabled {
+  cursor: default;
+}
+
+/* While the numbers are loading the arrows keep turning */
+.dashboard-refresh.spinning svg {
+  animation: spin 0.8s linear infinite;
+}
+
+/* ---------- Content ---------- */
+
+/* Old numbers fade a little while the new ones are on the way */
+.dashboard-content {
+  transition: opacity 0.2s;
+}
+
+.dashboard-content.refreshing {
+  opacity: 0.55;
 }
 
 .stat-cards {
@@ -17,17 +99,85 @@
   gap: 20px;
 }
 
-.dashboard-heading {
-  margin: 32px 0 16px;
+/* A wide box on the left and a narrow box on the right */
+.dashboard-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+/* Cards and boxes slide in one after the other when the page opens */
+.stat-cards > *,
+.dashboard-row > * {
+  animation: rise-in 0.45s backwards;
+}
+
+.stat-cards > :nth-child(2) {
+  animation-delay: 0.06s;
+}
+
+.stat-cards > :nth-child(3) {
+  animation-delay: 0.12s;
+}
+
+.stat-cards > :nth-child(4) {
+  animation-delay: 0.18s;
+}
+
+.dashboard-row > * {
+  animation-delay: 0.22s;
+}
+
+.dashboard-row > :nth-child(2) {
+  animation-delay: 0.28s;
+}
+
+/* ---------- "Could not load" box ---------- */
+
+.dashboard-message {
+  padding: 40px 24px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 14px;
+  text-align: center;
+}
+
+.dashboard-message h2 {
+  margin-bottom: 6px;
   font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }
 
-/* Medium screens: Waba table goes below, cards become 2 per row */
+.dashboard-message p {
+  color: var(--grey-text);
+}
+
+.dashboard-message-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: var(--error-light);
+  color: var(--error);
+}
+
+.dashboard-retry {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* ---------- Smaller screens ---------- */
+
+/* Tablets: boxes go under each other, cards become 2 per row */
 @media (max-width: 1200px) {
-  .dashboard {
-    grid-template-columns: 1fr;
+  .dashboard-row {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .stat-cards {
@@ -35,9 +185,36 @@
   }
 }
 
-/* Phones: 1 card per row */
-@media (max-width: 500px) {
+/* Phones: 1 card per row, filter uses the full width */
+@media (max-width: 600px) {
   .stat-cards {
     grid-template-columns: 1fr;
+  }
+
+  .dashboard-controls {
+    width: 100%;
+    align-items: flex-start;
+  }
+
+  .dashboard-controls .date-filter {
+    flex: 1;
+  }
+}
+
+/* No movement for users who turned animations off on their device */
+@media (prefers-reduced-motion: reduce) {
+  .stat-cards > *,
+  .dashboard-row > *,
+  .dashboard-refresh.spinning svg {
+    animation: none;
+  }
+
+  .dashboard-content,
+  .dashboard-refresh svg {
+    transition: none;
+  }
+
+  .dashboard-refresh:hover:not(:disabled) svg {
+    transform: none;
   }
 }

@@ -1,9 +1,55 @@
+/* Each card sets its own two colors here. The rules below use them. */
+.stat-card.purple {
+  --tone: var(--purple);
+  --tone-light: var(--purple-light);
+}
+
+.stat-card.orange {
+  --tone: var(--orange-dark);
+  --tone-light: var(--orange-light);
+}
+
+.stat-card.red {
+  --tone: var(--error);
+  --tone-light: var(--error-light);
+}
+
 .stat-card {
+  position: relative;
+  min-width: 0; /* lets a long number wrap instead of pushing the card wider */
   padding: 20px;
-  background: var(--purple-light);
+  overflow: hidden; /* keeps the colored line inside the round corners */
+  background: var(--white);
   border: 1px solid var(--grey-line);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(35, 26, 34, 0.08);
+  border-radius: 14px;
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s,
+    border-color 0.25s;
+}
+
+/* Thin colored line on top of the card. It grows when the mouse is over. */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--tone);
+  transform: scaleX(0.25);
+  transform-origin: left;
+  transition: transform 0.35s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--tone-light);
+  box-shadow: 0 10px 24px rgba(35, 26, 34, 0.08);
+}
+
+.stat-card:hover::before {
+  transform: scaleX(1);
 }
 
 .stat-card-top {
@@ -11,27 +57,100 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  margin-bottom: 16px;
-}
-
-.stat-card-icon {
-  display: flex;
-  color: var(--orange);
+  margin-bottom: 14px;
 }
 
 .stat-card-title {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
-}
-
-.stat-card-amount {
-  font-family: var(--font-heading);
-  font-size: 28px;
-  font-weight: 600;
-  color: var(--purple-dark);
-}
-
-.stat-card-count {
-  margin-top: 4px;
   color: var(--grey-text);
+}
+
+/* Round colored box behind the icon */
+.stat-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--tone-light);
+  color: var(--tone);
+  /* The icon "pops" in when the card first shows */
+  animation: icon-pop 0.5s 0.15s backwards;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s,
+    background 0.3s,
+    color 0.3s;
+}
+
+/* Mouse over the card: the icon tilts, fills with color and gets a soft ring */
+.stat-card:hover .stat-card-icon {
+  background: var(--tone);
+  color: var(--white);
+  transform: rotate(-8deg) scale(1.1);
+  box-shadow: 0 0 0 5px var(--tone-light);
+}
+
+.stat-card-value {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.2;
+  /* Every digit gets the same width, so the number does not shake
+     from side to side while it counts */
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.stat-card-hint {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--grey-text);
+}
+
+.stat-card-warning {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--orange-dark);
+}
+
+/* Grey bars shown in place of the numbers while they are loading */
+.stat-card-skeleton {
+  border-radius: 6px;
+  background: var(--grey-line);
+  animation: skeleton-pulse 1.2s ease-in-out infinite;
+}
+
+.stat-card-skeleton.big {
+  width: 60%;
+  height: 31px;
+}
+
+.stat-card-skeleton.small {
+  width: 80%;
+  height: 16px;
+  margin-top: 8px;
+}
+
+/* No movement for users who turned animations off on their device */
+@media (prefers-reduced-motion: reduce) {
+  .stat-card,
+  .stat-card::before,
+  .stat-card-icon {
+    animation: none;
+    transition: none;
+  }
+
+  .stat-card:hover,
+  .stat-card:hover .stat-card-icon {
+    transform: none;
+  }
+
+  .stat-card-skeleton {
+    animation: none;
+  }
 }

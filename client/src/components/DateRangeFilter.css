@@ -1,0 +1,43 @@
+/* One rounded box that holds all the filter buttons */
+.date-filter {
+  display: flex;
+  flex-wrap: wrap; /* on phones the buttons go to a second line */
+  gap: 4px;
+  padding: 4px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 10px;
+}
+
+.date-filter-button {
+  height: 32px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--grey-text);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+
+.date-filter-button:hover {
+  background: var(--purple-light);
+  color: var(--purple);
+}
+
+/* The filter that is selected now */
+.date-filter-button.active {
+  background: var(--purple);
+  color: var(--white);
+}
+
+/* Phones: every button gets the same share of the row */
+@media (max-width: 500px) {
+  .date-filter-button {
+    flex: 1;
+  }
+}

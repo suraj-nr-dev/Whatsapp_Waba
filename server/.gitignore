@@ -3,3 +3,6 @@ node_modules
 
 # User accounts are local data, like a database. Never commit them.
 data/users.json
+
+# Sent messages are local data too.
+data/messages.json

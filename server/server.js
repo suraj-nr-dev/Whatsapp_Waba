@@ -3,6 +3,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const authRoutes = require("./routes/auth");
+const analyticsRoutes = require("./routes/analytics");
 
 // The login tokens are signed with this secret. Without it nobody can log in,
 // so stop here with a clear message instead of failing later.
@@ -31,6 +32,9 @@ app.get("/api/message", (req, res) => {
 
 // Login routes: /api/auth/login and /api/auth/me
 app.use("/api/auth", authRoutes);
+
+// Dashboard numbers: /api/analytics/dashboard?range=today
+app.use("/api/analytics", analyticsRoutes);
 
 const PORT = process.env.PORT || 5000;
 

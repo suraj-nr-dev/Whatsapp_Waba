@@ -1,0 +1,172 @@
+.chart-card.purple {
+  --tone: var(--purple);
+  --tone-light: var(--purple-light);
+}
+
+.chart-card.orange {
+  --tone: var(--orange-dark);
+  --tone-light: var(--orange-light);
+}
+
+.chart-card {
+  min-width: 0; /* lets the chart shrink with the page */
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 14px;
+  transition: box-shadow 0.25s;
+}
+
+.chart-card:hover {
+  box-shadow: 0 10px 24px rgba(35, 26, 34, 0.06);
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.chart-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--tone-light);
+  color: var(--tone);
+  transition:
+    transform 0.3s,
+    background 0.3s,
+    color 0.3s;
+}
+
+/* Mouse over the card: the icon fills with color and tilts a little */
+.chart-card:hover .chart-card-icon {
+  background: var(--tone);
+  color: var(--white);
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.chart-card-titles {
+  flex: 1;
+  min-width: 0;
+}
+
+.chart-card-title {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.chart-card-subtitle {
+  font-size: 13px;
+  color: var(--grey-text);
+}
+
+.chart-card-total {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Grey box in place of the chart while it is loading */
+.chart-card-skeleton {
+  height: 260px;
+  border-radius: 10px;
+  background: var(--grey-line);
+  animation: skeleton-pulse 1.2s ease-in-out infinite;
+}
+
+/* Message shown when there is nothing to draw */
+.chart-card-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 260px;
+  padding: 0 16px;
+  color: var(--grey-text);
+  font-size: 14px;
+  text-align: center;
+}
+
+.chart-card-empty-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  background: var(--tone-light);
+  color: var(--tone);
+}
+
+.chart-card-empty-title {
+  margin-bottom: 4px;
+  font-family: var(--font-heading);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---------- Small box that follows the mouse on a chart ---------- */
+
+.chart-tooltip {
+  padding: 10px 12px;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(35, 26, 34, 0.12);
+  font-size: 13px;
+}
+
+.chart-tooltip-label {
+  margin-bottom: 4px;
+  color: var(--grey-text);
+}
+
+.chart-tooltip-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Colored dot that shows which line or slice the number belongs to */
+.chart-tooltip-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.chart-tooltip-value {
+  margin-left: auto;
+  padding-left: 12px;
+  font-weight: 600;
+}
+
+/* The charts are drawn by the Recharts library. Remove the black box it
+   shows when a chart is clicked. */
+.chart-card .recharts-wrapper *:focus {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chart-card,
+  .chart-card-icon {
+    transition: none;
+  }
+
+  .chart-card:hover .chart-card-icon {
+    transform: none;
+  }
+
+  .chart-card-skeleton {
+    animation: none;
+  }
+}
